@@ -7,8 +7,13 @@
 
 # Nuestros ignore específicos
 # seguimos probando git, en este caso usar el pull
+
 # cambios locales
 probando.txt
+
+# Cambios remotos
+remoto.txt
+
 
 # User-specific files
 *.suo
