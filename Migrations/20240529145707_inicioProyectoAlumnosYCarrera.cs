@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Inscripciones.Migrations
 {
     /// <inheritdoc />
-    public partial class InitioProyectoMySql : Migration
+    public partial class inicioProyectoAlumnosYCarrera : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +34,21 @@ namespace Inscripciones.Migrations
                     table.PrimaryKey("PK_alumnos", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "carreras",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_carreras", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
         }
 
         /// <inheritdoc />
@@ -41,6 +56,9 @@ namespace Inscripciones.Migrations
         {
             migrationBuilder.DropTable(
                 name: "alumnos");
+
+            migrationBuilder.DropTable(
+                name: "carreras");
         }
     }
 }
