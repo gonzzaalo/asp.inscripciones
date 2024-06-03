@@ -4,6 +4,10 @@ namespace Inscripciones.Models
 {
     public class InscripcionesContext : DbContext
     {
+        public InscripcionesContext(DbContextOptions<InscripcionesContext>options) : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
             optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;      
@@ -13,6 +17,7 @@ namespace Inscripciones.Models
                            Encrypt=false ") ;
         }
 
-        public virtual DbSet<Alumno> alumnos { get; set; }
+        public virtual DbSet<Alumno> alumnos { get; set; } 
+        public virtual DbSet<Carrera> carreras { get; set; }
     }
 }
