@@ -48,8 +48,8 @@ namespace Inscripciones.Controllers
         // GET: Inscripciones/Create
         public IActionResult Create()
         {
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "Id");
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "id", "id");
+            ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre");
+            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace Inscripciones.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "Id", inscripcion.AlumnoId);
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "id", "id", inscripcion.CarreraId);
+            ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
@@ -84,8 +84,8 @@ namespace Inscripciones.Controllers
             {
                 return NotFound();
             }
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "Id", inscripcion.AlumnoId);
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "id", "id", inscripcion.CarreraId);
+            ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
@@ -121,8 +121,8 @@ namespace Inscripciones.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "Id", inscripcion.AlumnoId);
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "id", "id", inscripcion.CarreraId);
+            ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
