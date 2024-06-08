@@ -15,7 +15,7 @@ namespace Inscripciones.Models
             //               User Id = sa; Password = 123;
             //               MultipleActiveResultSets = True; 
             //               Encrypt=false ") ;
-            string cadenaConexion = "Server=5.57.213.17;Database=smartsof_arayalauty;User=smartsof_araya;Password=arayalauty123;";
+            string cadenaConexion ="Server=5.57.213.17;Database=smartsof_sofirey;User=smartsof_rey;Password=reysofi1234;";
 
 
             optionsBuilder.UseMySql(cadenaConexion,
@@ -24,7 +24,7 @@ namespace Inscripciones.Models
 
         public virtual DbSet<Alumno> alumnos { get; set; }
         public virtual DbSet<Carrera> carreras { get; set; }
-        public virtual DbSet<Inscripcion> Inscripcions { get; set; }
+        public virtual DbSet<Inscripcion> Inscripciones { get; set; }
         public virtual DbSet<AnioCarrera> AnioCarreras { get; set; }
         public virtual DbSet<Materia> Materias { get; set; }
         public virtual DbSet<DetalleInscripcion> DetalleInscripcions { get; set; }

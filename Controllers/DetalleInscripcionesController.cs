@@ -48,7 +48,7 @@ namespace Inscripciones.Controllers
         // GET: DetalleInscripciones/Create
         public IActionResult Create()
         {
-            ViewData["InscripcionId"] = new SelectList(_context.Inscripcions, "Id", "Id");
+            ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id");
             ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id");
             return View();
         }
@@ -66,7 +66,7 @@ namespace Inscripciones.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InscripcionId"] = new SelectList(_context.Inscripcions, "Id", "Id", detalleInscripcion.InscripcionId);
+            ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
             ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
@@ -84,7 +84,7 @@ namespace Inscripciones.Controllers
             {
                 return NotFound();
             }
-            ViewData["InscripcionId"] = new SelectList(_context.Inscripcions, "Id", "Id", detalleInscripcion.InscripcionId);
+            ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
             ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
@@ -121,7 +121,7 @@ namespace Inscripciones.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InscripcionId"] = new SelectList(_context.Inscripcions, "Id", "Id", detalleInscripcion.InscripcionId);
+            ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
             ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
