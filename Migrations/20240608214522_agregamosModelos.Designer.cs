@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    [Migration("20240608183431_agregamosDetalleCursado")]
-    partial class agregamosDetalleCursado
+    [Migration("20240608214522_agregamosModelos")]
+    partial class agregamosModelos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,7 +142,7 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("CarreraId");
 
-                    b.ToTable("Inscripcions");
+                    b.ToTable("Inscripciones");
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>

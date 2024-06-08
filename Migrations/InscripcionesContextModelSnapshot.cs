@@ -139,7 +139,7 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("CarreraId");
 
-                    b.ToTable("Inscripcions");
+                    b.ToTable("Inscripciones");
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>
