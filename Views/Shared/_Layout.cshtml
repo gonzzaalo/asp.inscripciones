@@ -6,36 +6,44 @@
     <title>@ViewData["Title"] - Inscripciones</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Inscripciones.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inscripciones</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: #007BFF; font-weight: bold; font-size: 1.5em; transition: color 0.3s;">Inscripciones</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                    <ul class="navbar-nav flex-grow-1" style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: nowrap;">
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Nosotros" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Nosotros</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aniversario35">35 Aniversario</a>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aniversario35" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">35 Aniversario</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Alumnos" asp-action="Index">Alumnos</a>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Alumnos" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Alumnos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Carreras" asp-action="Index">Carreras</a>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Carreras" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Carreras</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Inscripciones" asp-action="Index">Inscripciones</a>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Inscripciones" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inscripciones</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="AnioCarreras" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Años de Carrera</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Materias" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Materias</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
+                            <a class="nav-link" asp-area="" asp-controller="DetalleInscripciones" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Detalle de Inscripciones</a>
                         </li>
                     </ul>
                 </div>

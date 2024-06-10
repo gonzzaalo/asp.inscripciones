@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Inscripciones.Models;
 
 namespace Inscripciones.Models
 {
@@ -26,5 +27,7 @@ namespace Inscripciones.Models
         public virtual DbSet<Carrera> carreras { get; set; }
         public virtual DbSet<Inscripcion> inscripciones { get; set; }
         public virtual DbSet<AnioCarrera> AnioCarreras { get; set; }
+        public virtual DbSet<Materia> Materias { get; set; }
+        public virtual DbSet<DetalleInscripcion> DetalleInscripciones { get; set; }
     }
 }

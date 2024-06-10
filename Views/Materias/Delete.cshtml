@@ -1,4 +1,4 @@
-﻿@model Inscripciones.Models.Carrera
+﻿@model Inscripciones.Models.Materia
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,9 +6,9 @@
 
 <h1>Eliminar</h1>
 
-<h3>¿Está seguro que desea eliminar esta carrera?</h3>
+<h3>¿Está seguro que desea eliminar esta materia?</h3>
 <div>
-    <h4>Carrera</h4>
+    <h4>Materia</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,10 +17,16 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnioCarrera)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnioCarrera.Id)
+        </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="id" />
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |
         <a asp-action="Index">Volver a la lista</a>
     </form>
