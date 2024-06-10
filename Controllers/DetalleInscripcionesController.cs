@@ -21,8 +21,10 @@ namespace Inscripciones.Controllers
         // GET: DetalleInscripciones
         public async Task<IActionResult> Index()
         {
-            var inscripcionesContext = _context.DetalleInscripcions.Include(d => d.Inscripcion).Include(d => d.Materia);
-            return View(await inscripcionesContext.ToListAsync());
+            var inscripcionesContext = await _context.DetalleInscripcions.Include(d => d.Inscripcion).ThenInclude(i => i.Alumno).Include(d => d.Materia).ToListAsync();
+
+
+            return View( inscripcionesContext);
         }
 
         // GET: DetalleInscripciones/Details/5
@@ -48,8 +50,8 @@ namespace Inscripciones.Controllers
         // GET: DetalleInscripciones/Create
         public IActionResult Create()
         {
-            ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id");
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id");
+            ViewData["Inscripciones"] = new SelectList(_context.Inscripciones.Include(i=>i.Alumno), "Id", "Inscripto");
+            ViewData["Materias"] = new SelectList(_context.Materias, "Id", "Nombre");
             return View();
         }
 
@@ -67,7 +69,7 @@ namespace Inscripciones.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 
@@ -85,7 +87,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
             ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 
@@ -122,7 +124,7 @@ namespace Inscripciones.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InscripcionId"] = new SelectList(_context.Inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 

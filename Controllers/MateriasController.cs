@@ -25,6 +25,14 @@ namespace Inscripciones.Controllers
             return View(await inscripcionesContext.ToListAsync());
         }
 
+        public async Task<IActionResult> IndexPorAnio(int? idanio = 1)
+        {
+            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "añoYCarrera");
+            ViewData["IdAnio"] = idanio;
+            var inscripcionesContext = await _context.Materias.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(m=>m.AnioCarreraId.Equals(idanio)).ToListAsync();
+            return View( inscripcionesContext);
+        }
+
         // GET: Materias/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,6 +55,7 @@ namespace Inscripciones.Controllers
         // GET: Materias/Create
         public IActionResult Create()
         {
+
             ViewData["AnioCarreraId"] = new SelectList(_context.AnioCarreras, "Id", "Id");
             return View();
         }
