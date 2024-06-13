@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Index";
     int idanio = ViewBag.IdAnio;
-   
+    int idcarrera = ViewBag.IdCarrera;
+
 }
 
 <h1>MOSTRANDO MATERIAS DEL AÑO SELECCIONADO</h1>
@@ -39,14 +40,16 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnioCarrera.Id)
+                @Html.DisplayFor(modelItem => item.AnioCarrera.Nombre)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn editar">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn detalles">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn eliminar">Eliminar</a>
+                </td>
         </tr>
 }
     </tbody>
 </table>
+
+<a asp-controller="AnioCarreras" asp-action="IndexPorCarrera" asp-route-idcarrera="@idcarrera">Volver</a>

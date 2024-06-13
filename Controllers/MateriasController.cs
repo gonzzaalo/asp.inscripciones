@@ -29,8 +29,10 @@ namespace Inscripciones.Controllers
         {
             ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "añoYCarrera");
             ViewData["IdAnio"] = idanio;
-            var inscripcionesContext = await _context.Materias.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(m=>m.AnioCarreraId.Equals(idanio)).ToListAsync();
-            return View( inscripcionesContext);
+
+            var materias = await _context.Materias.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(m=>m.AnioCarreraId.Equals(idanio)).ToListAsync();
+            ViewData["IdCarrera"] = materias.FirstOrDefault()?.AnioCarrera.CarreraId ?? 0;
+            return View( materias);
         }
 
         // GET: Materias/Details/5
