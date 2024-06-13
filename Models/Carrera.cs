@@ -2,7 +2,7 @@
 {
     public class Carrera
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
 
         public override string ToString()

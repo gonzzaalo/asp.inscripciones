@@ -46,7 +46,7 @@ namespace Inscripciones.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCarrera(int id, Carrera carrera)
         {
-            if (id != carrera.id)
+            if (id != carrera.Id)
             {
                 return BadRequest();
             }
@@ -80,7 +80,7 @@ namespace Inscripciones.Controllers
             _context.carreras.Add(carrera);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCarrera", new { id = carrera.id }, carrera);
+            return CreatedAtAction("GetCarrera", new { id = carrera.Id }, carrera);
         }
 
         // DELETE: api/ApiCarreras/5
@@ -101,7 +101,7 @@ namespace Inscripciones.Controllers
 
         private bool CarreraExists(int id)
         {
-            return _context.carreras.Any(e => e.id == id);
+            return _context.carreras.Any(e => e.Id == id);
         }
     }
 }

@@ -1,28 +1,29 @@
-﻿@model IEnumerable<Inscripciones.Models.Alumno>
+﻿@model IEnumerable<Inscripciones.Models.AnioCarrera>
 
 @{
     ViewData["Title"] = "Index";
+    int idcarrera = ViewBag.IdCarrera;
 }
 
-<h1>Lista de Alumnos</h1>
+<h1>Mostrando Años de Carrera</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo Alumno</a>
+    <a asp-action="Create" style="color: black; background-color: #90EE90; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Crear Nueva</a>
 </p>
+<form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="post">
+    <div class="form-group">
+        <label asp-for="@idcarrera" class="control-label"></label>
+        <select asp-for="@idcarrera" class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ApellidoNombre)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Carrera)
             </th>
             <th></th>
         </tr>
@@ -31,23 +32,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ApellidoNombre)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.Carrera.Id)
             </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" style="color: black; background-color: #FFD700; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" style="color: black; background-color: #90EE90; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Detalles</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id" style="color: black; background-color: #FF6347; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Eliminar</a>
                 </td>
-
 
         </tr>
 }

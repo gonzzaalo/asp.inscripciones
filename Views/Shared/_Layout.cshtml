@@ -19,36 +19,48 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1" style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: nowrap;">
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inicio</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index") ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inicio</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Nosotros" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Nosotros</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Nosotros") ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Nosotros" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Nosotros") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Nosotros</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aniversario35" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">35 Aniversario</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Aniversario35") ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Aniversario35" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Aniversario35") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">35 Aniversario</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Alumnos" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Alumnos</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Alumnos") ? "active" : "")"
+                               asp-area="" asp-controller="Alumnos" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Alumnos") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Alumnos</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Carreras" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Carreras</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Carreras") ? "active" : "")"
+                               asp-area="" asp-controller="Carreras" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Carreras") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Carreras</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Inscripciones" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inscripciones</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Inscripciones") ? "active" : "")"
+                               asp-area="" asp-controller="Inscripciones" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Inscripciones") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Inscripciones</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="AnioCarreras" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Años de Carrera</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "AnioCarreras") ? "active" : "")"
+                               asp-area="" asp-controller="AnioCarreras" asp-action="IndexPorCarrera" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "AnioCarreras") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Años de Carrera</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="Materias" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Materias</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Materias") ? "active" : "")"
+                               asp-area="" asp-controller="Materias" asp-action="IndexPorAnio" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "Materias") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Materias</a>
                         </li>
                         <li class="nav-item" style="margin-right: 5px; flex: 1 0 auto;">
-                            <a class="nav-link" asp-area="" asp-controller="DetalleInscripciones" asp-action="Index" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: #007BFF; border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Detalle de Inscripciones</a>
+                            <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString() == "DetalleInscripciones") ? "active" : "")"
+                               asp-area="" asp-controller="DetalleInscripciones" asp-action="IndexPorInscripcion" style="display: inline-block; padding: 5px 10px; text-decoration: none; color: white; background-color: @((ViewContext.RouteData.Values["Controller"]?.ToString() == "DetalleInscripciones") ? "#0056b3" : "#007BFF"); border-radius: 5px; transition: background-color 0.3s, color 0.3s;">Detalle de Inscripciones</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

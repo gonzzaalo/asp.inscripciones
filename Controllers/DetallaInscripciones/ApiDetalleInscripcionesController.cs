@@ -22,7 +22,7 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiDetalleInscripciones
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> GetDetalleInscripciones()
+        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones()
         {
             return await _context.DetalleInscripciones.ToListAsync();
         }

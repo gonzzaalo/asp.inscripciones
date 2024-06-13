@@ -33,7 +33,7 @@ namespace Inscripciones.Controllers
             }
 
             var carrera = await _context.carreras
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (carrera == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace Inscripciones.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,Nombre")] Carrera carrera)
         {
-            if (id != carrera.id)
+            if (id != carrera.Id)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace Inscripciones.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarreraExists(carrera.id))
+                    if (!CarreraExists(carrera.Id))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace Inscripciones.Controllers
             }
 
             var carrera = await _context.carreras
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (carrera == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace Inscripciones.Controllers
 
         private bool CarreraExists(int id)
         {
-            return _context.carreras.Any(e => e.id == id);
+            return _context.carreras.Any(e => e.Id == id);
         }
     }
 }

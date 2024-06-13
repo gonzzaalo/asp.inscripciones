@@ -19,9 +19,11 @@ namespace Inscripciones.Controllers
         }
 
         // GET: DetalleInscripciones
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexPorInscripcion(int? idinscripcion = 1)
         {
-            var inscripcionesContext = _context.DetalleInscripciones.Include(d => d.Inscripcion).Include(d => d.Materia);
+            var inscripcionesContext = _context.DetalleInscripciones.Include(d => d.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(d => d.InscripcionId.Equals(idinscripcion)).OrderBy(d => d.Materia.AnioCarreraId);
+            ViewData["Inscripciones"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", idinscripcion);
+            ViewData["IdInscripcion"] = idinscripcion;
             return View(await inscripcionesContext.ToListAsync());
         }
 
@@ -34,7 +36,7 @@ namespace Inscripciones.Controllers
             }
 
             var detalleInscripcion = await _context.DetalleInscripciones
-                .Include(d => d.Inscripcion)
+                .Include(d => d.Inscripcion).ThenInclude(d => d.Alumno)
                 .Include(d => d.Materia)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (detalleInscripcion == null)
@@ -48,8 +50,20 @@ namespace Inscripciones.Controllers
         // GET: DetalleInscripciones/Create
         public IActionResult Create()
         {
-            ViewData["InscripcionId"] = new SelectList(_context.inscripciones, "Id", "Id");
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id");
+            ViewData["Inscripciones"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto");
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre");
+            return View();
+        }
+        // GET: DetalleInscripciones/Create
+        public IActionResult CreateConInscripcion(int? idinscripcion = 1, int? idaniocarrera = null)
+        {
+            ViewData["Inscripciones"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", idinscripcion);
+            Inscripcion inscripcion = _context.inscripciones.FirstOrDefault(i => i.Id == idinscripcion);
+            idaniocarrera ??= _context.AnioCarreras.Where(i => i.CarreraId == inscripcion.CarreraId).FirstOrDefault().Id;
+            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera).Where(_i => _i.CarreraId == inscripcion.CarreraId), "Id", "AñoYCarrera", idaniocarrera);
+            ViewData["IdInscripcion"] = idinscripcion;
+            ViewData["IdAnioCarrera"] = idaniocarrera;
+            ViewData["MateriaId"] = new SelectList(_context.Materias.Where(m => m.AnioCarreraId.Equals(idaniocarrera)), "Id", "Nombre");
             return View();
         }
 
@@ -58,16 +72,16 @@ namespace Inscripciones.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ModalidadCursado,InscripcionId,MateriaId")] DetalleInscripcion detalleInscripcion)
+        public async Task<IActionResult> CreateConInscripcion([Bind("Id,ModalidadCursado,InscripcionId,MateriaId")] DetalleInscripcion detalleInscripcion)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(detalleInscripcion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexPorInscripcion), new { idinscripcion = detalleInscripcion.InscripcionId });
             }
-            ViewData["InscripcionId"] = new SelectList(_context.inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["InscripcionId"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", detalleInscripcion.InscripcionId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 
@@ -84,8 +98,8 @@ namespace Inscripciones.Controllers
             {
                 return NotFound();
             }
-            ViewData["InscripcionId"] = new SelectList(_context.inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["InscripcionId"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", detalleInscripcion.InscripcionId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 
@@ -121,8 +135,8 @@ namespace Inscripciones.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InscripcionId"] = new SelectList(_context.inscripciones, "Id", "Id", detalleInscripcion.InscripcionId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Id", detalleInscripcion.MateriaId);
+            ViewData["InscripcionId"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", detalleInscripcion.InscripcionId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }
 
@@ -135,7 +149,7 @@ namespace Inscripciones.Controllers
             }
 
             var detalleInscripcion = await _context.DetalleInscripciones
-                .Include(d => d.Inscripcion)
+                .Include(d => d.Inscripcion).ThenInclude(d => d.Alumno)
                 .Include(d => d.Materia)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (detalleInscripcion == null)
@@ -145,6 +159,7 @@ namespace Inscripciones.Controllers
 
             return View(detalleInscripcion);
         }
+
 
         // POST: DetalleInscripciones/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -1,28 +1,25 @@
-﻿@model IEnumerable<Inscripciones.Models.Alumno>
+﻿@model IEnumerable<Inscripciones.Models.DetalleInscripcion>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Alumnos</h1>
+<h1>Detalles de Inscripciones</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo Alumno</a>
+    <a asp-action="Create">Crear nueva inscripción</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ApellidoNombre)
+                @Html.DisplayNameFor(model => model.ModalidadCursado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.Inscripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Materia)
             </th>
             <th></th>
         </tr>
@@ -31,23 +28,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ApellidoNombre)
+                    @Html.DisplayFor(modelItem => item.ModalidadCursado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
+                    @Html.DisplayFor(modelItem => item.Materia.AnioCarrera.AñoYCarrera)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.Materia.Nombre)
             </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" style="color: black; background-color: #FFD700; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" style="color: black; background-color: #90EE90; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Detalles</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id" style="color: black; background-color: #FF6347; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Eliminar</a>
                 </td>
-
 
         </tr>
 }

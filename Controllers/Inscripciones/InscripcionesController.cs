@@ -49,7 +49,7 @@ namespace Inscripciones.Controllers
         public IActionResult Create()
         {
             ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre");
-            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre");
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace Inscripciones.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
-            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
@@ -85,7 +85,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
             ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
-            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
@@ -122,7 +122,7 @@ namespace Inscripciones.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
-            ViewData["Carreras"] = new SelectList(_context.carreras, "id", "Nombre", inscripcion.CarreraId);
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
