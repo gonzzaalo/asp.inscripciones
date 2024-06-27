@@ -3,17 +3,18 @@
 @{
     ViewData["Title"] = "Index";
     int idanio = ViewBag.IdAnio;
+    int idcarrera = ViewBag.IdCarrera;
 }
 
 <h1>Mostrando materias del año seleccionado</h1>
 
 <p>
-    <a asp-action="Create">Crear Nueva Materia</a>
+    <a asp-action="CreateConAnio" asp--route-idanio="@idanio">Crear Nueva Materia</a>
 </p>
 <form asp-controller="Materias" asp-action="IndexPorAnio" method="get">
     <div class="form-group">
         <label asp-for="@idanio" class="control-label"></label>
-        <select asp-for="@idanio" class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
+        <select asp-for="@idanio" disabled class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
     </div>
 </form>
 <table class="table">
@@ -35,15 +36,18 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnioCarrera.Id)
+                @Html.DisplayFor(modelItem => item.AnioCarrera.Nombre)
             </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" style="color: black; background-color: #FFD700; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" style="color: black; background-color: #90EE90; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" style="color: black; background-color: #FF6347; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Eliminar</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="edit-link">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details-link">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link">Eliminar</a>
                 </td>
 
         </tr>
 }
     </tbody>
 </table>
+
+<a asp-controller="AnioCarreras" asp-action="IndexPorCarrera" asp-route-idcarrera="@idcarrera">Volver</a>
+

@@ -55,7 +55,7 @@ namespace Inscripciones.Controllers
         // GET: AnioCarreras/Create
         public IActionResult Create()
         {
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "Id", "Id");
+            ViewData["CarreraId"] = new SelectList(_context.carreras, "Id", "Nombre");
             return View();
         }
 
