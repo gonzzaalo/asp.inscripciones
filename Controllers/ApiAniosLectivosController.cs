@@ -11,51 +11,47 @@ namespace Inscripciones.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiMateriasController : ControllerBase
+    public class ApiAniosLectivosController : ControllerBase
     {
         private readonly InscripcionesContext _context;
 
-        public ApiMateriasController(InscripcionesContext context)
+        public ApiAniosLectivosController(InscripcionesContext context)
         {
             _context = context;
         }
 
-        // GET: api/ApiMaterias
+        // GET: api/ApiAniosLectivos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Materia>>> Getmaterias([FromQuery] int? idAnioCarrera)
+        public async Task<ActionResult<IEnumerable<AnioLectivo>>> Getanioslectivos()
         {
-            if (idAnioCarrera != null)
-            {
-                return await _context.Materias.Where(m=>m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
-            }
-            return await _context.Materias.ToListAsync();
+            return await _context.anioslectivos.ToListAsync();
         }
 
-        // GET: api/ApiMaterias/5
+        // GET: api/ApiAniosLectivos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Materia>> GetMateria(int id)
+        public async Task<ActionResult<AnioLectivo>> GetAnioLectivo(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
+            var anioLectivo = await _context.anioslectivos.FindAsync(id);
 
-            if (materia == null)
+            if (anioLectivo == null)
             {
                 return NotFound();
             }
 
-            return materia;
+            return anioLectivo;
         }
 
-        // PUT: api/ApiMaterias/5
+        // PUT: api/ApiAniosLectivos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMateria(int id, Materia materia)
+        public async Task<IActionResult> PutAnioLectivo(int id, AnioLectivo anioLectivo)
         {
-            if (id != materia.Id)
+            if (id != anioLectivo.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(materia).State = EntityState.Modified;
+            _context.Entry(anioLectivo).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +59,7 @@ namespace Inscripciones.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MateriaExists(id))
+                if (!AnioLectivoExists(id))
                 {
                     return NotFound();
                 }
@@ -76,36 +72,36 @@ namespace Inscripciones.Controllers
             return NoContent();
         }
 
-        // POST: api/ApiMaterias
+        // POST: api/ApiAniosLectivos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Materia>> PostMateria(Materia materia)
+        public async Task<ActionResult<AnioLectivo>> PostAnioLectivo(AnioLectivo anioLectivo)
         {
-            _context.Materias.Add(materia);
+            _context.anioslectivos.Add(anioLectivo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMateria", new { id = materia.Id }, materia);
+            return CreatedAtAction("GetAnioLectivo", new { id = anioLectivo.Id }, anioLectivo);
         }
 
-        // DELETE: api/ApiMaterias/5
+        // DELETE: api/ApiAniosLectivos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMateria(int id)
+        public async Task<IActionResult> DeleteAnioLectivo(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
-            if (materia == null)
+            var anioLectivo = await _context.anioslectivos.FindAsync(id);
+            if (anioLectivo == null)
             {
                 return NotFound();
             }
 
-            _context.Materias.Remove(materia);
+            _context.anioslectivos.Remove(anioLectivo);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MateriaExists(int id)
+        private bool AnioLectivoExists(int id)
         {
-            return _context.Materias.Any(e => e.Id == id);
+            return _context.anioslectivos.Any(e => e.Id == id);
         }
     }
 }

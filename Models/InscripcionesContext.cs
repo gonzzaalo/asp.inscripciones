@@ -29,6 +29,21 @@ namespace Inscripciones.Models
         public virtual DbSet<Materia> Materias { get; set; }
         public virtual DbSet<DetalleInscripcion> DetalleInscripcions { get; set; }
 
+        public virtual DbSet<MesaExamen> mesasexamenes { get; set; }
+
+        public virtual DbSet<DetalleMesaExamen> detallesmesasexamenes { get; set; }
+
+        public virtual DbSet<TurnoExamen> turnosexamenes { get; set; }
+
+        public virtual DbSet<Docente> docentes { get; set; }
+
+
+
+        public virtual DbSet<AnioLectivo> anioslectivos { get; set; }
+
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region Datos semilla de carreras

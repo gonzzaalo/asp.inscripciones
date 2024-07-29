@@ -22,8 +22,12 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiDetalleInscripciones
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> GetDetalleInscripcions()
+        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones([FromQuery] int? idInscripcion)
         {
+            if(idInscripcion != null)
+            {
+                return await _context.DetalleInscripcions.Include(d=>d.Materia).ThenInclude(m=>m.AnioCarrera).Where(d=>d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
+            }
             return await _context.DetalleInscripcions.ToListAsync();
         }
 
@@ -31,7 +35,7 @@ namespace Inscripciones.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DetalleInscripcion>> GetDetalleInscripcion(int id)
         {
-            var detalleInscripcion = await _context.DetalleInscripcions.FindAsync(id);
+            var detalleInscripcion = await _context.DetalleInscripcions.Include(d=>d.Materia).Where(d=>d.Id.Equals(id)).FirstOrDefaultAsync();
 
             if (detalleInscripcion == null)
             {
@@ -52,6 +56,7 @@ namespace Inscripciones.Controllers
             }
 
             _context.Entry(detalleInscripcion).State = EntityState.Modified;
+            
 
             try
             {
@@ -102,6 +107,22 @@ namespace Inscripciones.Controllers
         private bool DetalleInscripcionExists(int id)
         {
             return _context.DetalleInscripcions.Any(e => e.Id == id);
+        }
+
+        [HttpGet("checkduplicado")]
+        public async Task<IActionResult> CheckDuplicado([FromQuery] int idDetalle, int idInscripcion, int idMateria)
+        {
+            bool isDuplicate;
+            if (idDetalle == 0)
+                isDuplicate = await _context.DetalleInscripcions.AnyAsync(d=>d.InscripcionId==idInscripcion &&d.MateriaId==idMateria);
+            else
+                isDuplicate= await _context.DetalleInscripcions.AnyAsync(d=>d.Id!= idDetalle && d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
+
+            if (isDuplicate)
+            {
+                return Conflict("ya está inscrito en esta materia.");
+            }
+            return Ok();
         }
     }
 }

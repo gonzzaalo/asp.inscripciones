@@ -11,51 +11,47 @@ namespace Inscripciones.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiMateriasController : ControllerBase
+    public class ApiTurnosExamenesController : ControllerBase
     {
         private readonly InscripcionesContext _context;
 
-        public ApiMateriasController(InscripcionesContext context)
+        public ApiTurnosExamenesController(InscripcionesContext context)
         {
             _context = context;
         }
 
-        // GET: api/ApiMaterias
+        // GET: api/ApiTurnosExamenes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Materia>>> Getmaterias([FromQuery] int? idAnioCarrera)
+        public async Task<ActionResult<IEnumerable<TurnoExamen>>> Getturnosexamenes()
         {
-            if (idAnioCarrera != null)
-            {
-                return await _context.Materias.Where(m=>m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
-            }
-            return await _context.Materias.ToListAsync();
+            return await _context.turnosexamenes.ToListAsync();
         }
 
-        // GET: api/ApiMaterias/5
+        // GET: api/ApiTurnosExamenes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Materia>> GetMateria(int id)
+        public async Task<ActionResult<TurnoExamen>> GetTurnoExamen(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
+            var turnoExamen = await _context.turnosexamenes.FindAsync(id);
 
-            if (materia == null)
+            if (turnoExamen == null)
             {
                 return NotFound();
             }
 
-            return materia;
+            return turnoExamen;
         }
 
-        // PUT: api/ApiMaterias/5
+        // PUT: api/ApiTurnosExamenes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMateria(int id, Materia materia)
+        public async Task<IActionResult> PutTurnoExamen(int id, TurnoExamen turnoExamen)
         {
-            if (id != materia.Id)
+            if (id != turnoExamen.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(materia).State = EntityState.Modified;
+            _context.Entry(turnoExamen).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +59,7 @@ namespace Inscripciones.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MateriaExists(id))
+                if (!TurnoExamenExists(id))
                 {
                     return NotFound();
                 }
@@ -76,36 +72,36 @@ namespace Inscripciones.Controllers
             return NoContent();
         }
 
-        // POST: api/ApiMaterias
+        // POST: api/ApiTurnosExamenes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Materia>> PostMateria(Materia materia)
+        public async Task<ActionResult<TurnoExamen>> PostTurnoExamen(TurnoExamen turnoExamen)
         {
-            _context.Materias.Add(materia);
+            _context.turnosexamenes.Add(turnoExamen);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMateria", new { id = materia.Id }, materia);
+            return CreatedAtAction("GetTurnoExamen", new { id = turnoExamen.Id }, turnoExamen);
         }
 
-        // DELETE: api/ApiMaterias/5
+        // DELETE: api/ApiTurnosExamenes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMateria(int id)
+        public async Task<IActionResult> DeleteTurnoExamen(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
-            if (materia == null)
+            var turnoExamen = await _context.turnosexamenes.FindAsync(id);
+            if (turnoExamen == null)
             {
                 return NotFound();
             }
 
-            _context.Materias.Remove(materia);
+            _context.turnosexamenes.Remove(turnoExamen);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MateriaExists(int id)
+        private bool TurnoExamenExists(int id)
         {
-            return _context.Materias.Any(e => e.Id == id);
+            return _context.turnosexamenes.Any(e => e.Id == id);
         }
     }
 }
