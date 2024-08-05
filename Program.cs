@@ -1,6 +1,7 @@
 using Inscripciones.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,28 +12,37 @@ var configuration = new ConfigurationBuilder()
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<InscripcionesContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlserver")));
-string cadenaConexion = configuration.GetConnectionString("mysqlremoto");
-builder.Services.AddDbContext<InscripcionesContext>(options => options.UseMySql(cadenaConexion,
-            ServerVersion.AutoDetect(cadenaConexion),
-                                options => options.EnableRetryOnFailure(
+string cadenaConexion = configuration.GetConnectionString("mysqlremoto") ;
+builder.Services.AddDbContext<InscripcionesContext>(
+    options => options.UseMySql(cadenaConexion,
+                                ServerVersion.AutoDetect(cadenaConexion),
+                    options => options.EnableRetryOnFailure(
                                         maxRetryCount: 5,
                                         maxRetryDelay: System.TimeSpan.FromSeconds(30),
-                                       errorNumbersToAdd: null)));
+                                       errorNumbersToAdd: null)
+                                ));
+// Configura el serializador JSON para manejar referencias cíclicas
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    });
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Configurar una politica de CORS
+
+// Configurar una política de CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
         builder => builder
-        .AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod());
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 });
-
 
 
 var app = builder.Build();
@@ -56,9 +66,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthorization();
+
 app.UseCors("AllowAll");
 
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

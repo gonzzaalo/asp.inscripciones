@@ -22,7 +22,7 @@ namespace Inscripciones.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var inscripciones = _context.Inscripciones.Include(i => i.Alumno).Include(i => i.Carrera);
+            var inscripciones = _context.inscripciones.Include(i => i.Alumno).Include(i => i.Carrera);
             return View(await inscripciones.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var inscripcion = await _context.Inscripciones
+            var inscripcion = await _context.inscripciones
                 .Include(i => i.Alumno)
                 .Include(i => i.Carrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -80,7 +80,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var inscripcion = await _context.Inscripciones.FindAsync(id);
+            var inscripcion = await _context.inscripciones.FindAsync(id);
             if (inscripcion == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var inscripcion = await _context.Inscripciones
+            var inscripcion = await _context.inscripciones
                 .Include(i => i.Alumno)
                 .Include(i => i.Carrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -152,10 +152,10 @@ namespace Inscripciones.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var inscripcion = await _context.Inscripciones.FindAsync(id);
+            var inscripcion = await _context.inscripciones.FindAsync(id);
             if (inscripcion != null)
             {
-                _context.Inscripciones.Remove(inscripcion);
+                _context.inscripciones.Remove(inscripcion);
             }
 
             await _context.SaveChangesAsync();
@@ -164,7 +164,7 @@ namespace Inscripciones.Controllers
 
         private bool InscripcionExists(int id)
         {
-            return _context.Inscripciones.Any(e => e.Id == id);
+            return _context.inscripciones.Any(e => e.Id == id);
         }
     }
 }

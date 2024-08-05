@@ -19,10 +19,10 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label"></label>
-                <select class="form-control" asp-items="ViewBag.Carreras" disabled></select>
+                <label  class="control-label"></label>
+                <select  class ="form-control" asp-items="ViewBag.Carreras" disabled></select>
             </div>
-            <input type="hidden" asp-for="CarreraId" value="@idcarrera" />
+            <input type="hidden" asp-for="CarreraId" value="@idcarrera"/>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -35,9 +35,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-

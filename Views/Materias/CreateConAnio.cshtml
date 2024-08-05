@@ -20,7 +20,7 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label"></label>
+                <label  class="control-label"></label>
                 <select class="form-control" asp-items="ViewBag.AniosCarreras" disabled></select>
             </div>
             <input type="hidden" asp-for="AnioCarreraId" value="@idanio" />
@@ -33,11 +33,9 @@
 </div>
 
 <div>
-    <a asp-action="IndexPorAnio" asp-route-idanio="@idanio">Back to List</a>
+    <a asp-action="IndexPorAnio"  asp-route-idanio="@idanio">Back to List</a>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

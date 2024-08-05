@@ -31,16 +31,16 @@
                 @Html.DisplayFor(modelItem => item.ModalidadCursado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Inscripcion.Inscripto)
+                @Html.DisplayFor(modelItem => item.Inscripcion.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Materia.Nombre)
+                @Html.DisplayFor(modelItem => item.Materia.Id)
             </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn editar">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn detalles">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn eliminar">Eliminar</a>
-                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
 }
     </tbody>

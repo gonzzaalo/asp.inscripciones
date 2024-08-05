@@ -21,14 +21,14 @@ namespace Inscripciones.Controllers
         // GET: AnioCarreras
         public async Task<IActionResult> Index()
         {
-            var inscripcionesContext = _context.AnioCarreras.Include(a => a.Carrera);
+            var inscripcionesContext = _context.anioscarreras.Include(a => a.Carrera);
             return View(await inscripcionesContext.ToListAsync());
         }
 
         public async Task<IActionResult> IndexPorCarrera(int? idcarrera=1)
         {
             ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre",idcarrera);
-            var inscripcionesContext = _context.AnioCarreras.Include(a => a.Carrera).Where(a=>a.CarreraId.Equals(idcarrera));
+            var inscripcionesContext = _context.anioscarreras.Include(a => a.Carrera).Where(a=>a.CarreraId.Equals(idcarrera));
             ViewData["IdCarrera"] = idcarrera;
 
             return View(await inscripcionesContext.ToListAsync());
@@ -41,7 +41,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var anioCarrera = await _context.AnioCarreras
+            var anioCarrera = await _context.anioscarreras
                 .Include(a => a.Carrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (anioCarrera == null)
@@ -105,7 +105,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var anioCarrera = await _context.AnioCarreras.FindAsync(id);
+            var anioCarrera = await _context.anioscarreras.FindAsync(id);
             if (anioCarrera == null)
             {
                 return NotFound();
@@ -158,7 +158,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var anioCarrera = await _context.AnioCarreras
+            var anioCarrera = await _context.anioscarreras
                 .Include(a => a.Carrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (anioCarrera == null)
@@ -174,10 +174,10 @@ namespace Inscripciones.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var anioCarrera = await _context.AnioCarreras.FindAsync(id);
+            var anioCarrera = await _context.anioscarreras.FindAsync(id);
             if (anioCarrera != null)
             {
-                _context.AnioCarreras.Remove(anioCarrera);
+                _context.anioscarreras.Remove(anioCarrera);
             }
 
             await _context.SaveChangesAsync();
@@ -186,7 +186,7 @@ namespace Inscripciones.Controllers
 
         private bool AnioCarreraExists(int id)
         {
-            return _context.AnioCarreras.Any(e => e.Id == id);
+            return _context.anioscarreras.Any(e => e.Id == id);
         }
     }
 }

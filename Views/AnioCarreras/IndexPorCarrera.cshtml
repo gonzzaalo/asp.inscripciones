@@ -6,21 +6,17 @@
 
 }
 
-<h1>MOSTRANDO CARRERAS SELECCIONADAS POR AÑO</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="CreateConCarrera" asp-route-idcarrera="">Create New</a>
+    <a asp-action="CreateConCarrera" asp-route-idcarrera="@idcarrera">Create New</a>
 </p>
-
 <form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="post">
     <div class="form-group">
         <label asp-for="@idcarrera" class="control-label"></label>
-        <select asp-for="@idcarrera" class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
+        <select asp-for="@idcarrera" disabled class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
     </div>
 </form>
-
-
-
 <table class="table">
     <thead>
         <tr>
@@ -42,15 +38,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Carrera.Nombre)
             </td>
-                <td>
-                    <a asp-controller="Materias" asp-action="IndexPorAnio" asp-route-idanio="@item.Id" class="btn materias">Materias</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn editar">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn detalles">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn eliminar">Eliminar</a>
-                </td>
+            <td>
+           <a asp-controller="Materias" asp-action="IndexPorAnio" asp-route-idanio="@item.Id">Materias</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
 }
     </tbody>
 </table>
-
 <a asp-controller="Carreras" asp-action="Index">Volver</a>

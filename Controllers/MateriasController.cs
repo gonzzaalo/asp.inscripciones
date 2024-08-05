@@ -21,17 +21,17 @@ namespace Inscripciones.Controllers
         // GET: Materias
         public async Task<IActionResult> Index()
         {
-            var inscripcionesContext = _context.Materias.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera);
+            var inscripcionesContext = _context.materias.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera);
             return View(await inscripcionesContext.ToListAsync());
         }
 
         public async Task<IActionResult> IndexPorAnio(int? idanio = 1)
         {
 
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera");
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera");
             ViewData["IdAnio"] = idanio;
             
-            var materias = await _context.Materias.Include(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(m=>m.AnioCarreraId.Equals(idanio)).ToListAsync();
+            var materias = await _context.materias.Include(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(m=>m.AnioCarreraId.Equals(idanio)).ToListAsync();
             ViewData["IdCarrera"] = materias.FirstOrDefault()?.AnioCarrera.CarreraId ?? 0;
             return View(materias);
         }
@@ -44,7 +44,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var materia = await _context.Materias
+            var materia = await _context.materias
                 .Include(m => m.AnioCarrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (materia == null)
@@ -58,12 +58,12 @@ namespace Inscripciones.Controllers
         // GET: Materias/Create
         public IActionResult Create()
         {
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a=>a.Carrera), "Id", "AñoYCarrera");
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a=>a.Carrera), "Id", "AñoYCarrera");
             return View();
         }
         public IActionResult CreateConAnio(int? idanio)
         {
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera",idanio);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera",idanio);
             ViewData["IdAnio"]=idanio;
             return View();
         }
@@ -81,7 +81,7 @@ namespace Inscripciones.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
             return View(materia);
         }
 
@@ -98,7 +98,7 @@ namespace Inscripciones.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexPorAnio), new { idanio = materia.AnioCarreraId });
             }
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
             return View(materia);
         }
         // GET: Materias/Edit/5
@@ -109,12 +109,12 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.materias.FindAsync(id);
             if (materia == null)
             {
                 return NotFound();
             }
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
             return View(materia);
         }
 
@@ -150,7 +150,7 @@ namespace Inscripciones.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AniosCarreras"] = new SelectList(_context.AnioCarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", materia.AnioCarreraId);
             return View(materia);
         }
 
@@ -162,7 +162,7 @@ namespace Inscripciones.Controllers
                 return NotFound();
             }
 
-            var materia = await _context.Materias
+            var materia = await _context.materias
                 .Include(m => m.AnioCarrera)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (materia == null)
@@ -178,10 +178,10 @@ namespace Inscripciones.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.materias.FindAsync(id);
             if (materia != null)
             {
-                _context.Materias.Remove(materia);
+                _context.materias.Remove(materia);
             }
 
             await _context.SaveChangesAsync();
@@ -190,7 +190,7 @@ namespace Inscripciones.Controllers
 
         private bool MateriaExists(int id)
         {
-            return _context.Materias.Any(e => e.Id == id);
+            return _context.materias.Any(e => e.Id == id);
         }
     }
 }
