@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Inscripciones
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,14 +24,14 @@ namespace Inscripciones.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Inscripcion>>> Getinscripciones()
         {
-            return await _context.Inscripciones.Include(i=>i.Carrera).Include(i=>i.Alumno).ToListAsync();
+            return await _context.inscripciones.Include(i => i.Carrera).Include(i => i.Alumno).ToListAsync();
         }
 
         // GET: api/ApiInscripciones/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Inscripcion>> GetInscripcion(int id)
         {
-            var inscripcion = await _context.Inscripciones.FindAsync(id);
+            var inscripcion = await _context.inscripciones.FindAsync(id);
 
             if (inscripcion == null)
             {
@@ -77,7 +77,7 @@ namespace Inscripciones.Controllers
         [HttpPost]
         public async Task<ActionResult<Inscripcion>> PostInscripcion(Inscripcion inscripcion)
         {
-            _context.Inscripciones.Add(inscripcion);
+            _context.inscripciones.Add(inscripcion);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetInscripcion", new { id = inscripcion.Id }, inscripcion);
@@ -87,13 +87,13 @@ namespace Inscripciones.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInscripcion(int id)
         {
-            var inscripcion = await _context.Inscripciones.FindAsync(id);
+            var inscripcion = await _context.inscripciones.FindAsync(id);
             if (inscripcion == null)
             {
                 return NotFound();
             }
 
-            _context.Inscripciones.Remove(inscripcion);
+            _context.inscripciones.Remove(inscripcion);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace Inscripciones.Controllers
 
         private bool InscripcionExists(int id)
         {
-            return _context.Inscripciones.Any(e => e.Id == id);
+            return _context.inscripciones.Any(e => e.Id == id);
         }
     }
 }

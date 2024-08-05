@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Inscripciones
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,18 +24,18 @@ namespace Inscripciones.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones([FromQuery] int? idInscripcion)
         {
-            if(idInscripcion != null)
+            if (idInscripcion != null)
             {
-                return await _context.DetalleInscripcions.Include(d=>d.Materia).ThenInclude(m=>m.AnioCarrera).Where(d=>d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
+                return await _context.detallesinscripciones.Include(d => d.Materia).ThenInclude(m => m.AnioCarrera).Where(d => d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
             }
-            return await _context.DetalleInscripcions.ToListAsync();
+            return await _context.detallesinscripciones.ToListAsync();
         }
 
         // GET: api/ApiDetalleInscripciones/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DetalleInscripcion>> GetDetalleInscripcion(int id)
         {
-            var detalleInscripcion = await _context.DetalleInscripcions.Include(d=>d.Materia).Where(d=>d.Id.Equals(id)).FirstOrDefaultAsync();
+            var detalleInscripcion = await _context.detallesinscripciones.Include(d => d.Materia).Where(d => d.Id.Equals(id)).FirstOrDefaultAsync();
 
             if (detalleInscripcion == null)
             {
@@ -56,7 +56,7 @@ namespace Inscripciones.Controllers
             }
 
             _context.Entry(detalleInscripcion).State = EntityState.Modified;
-            
+
 
             try
             {
@@ -82,7 +82,7 @@ namespace Inscripciones.Controllers
         [HttpPost]
         public async Task<ActionResult<DetalleInscripcion>> PostDetalleInscripcion(DetalleInscripcion detalleInscripcion)
         {
-            _context.DetalleInscripcions.Add(detalleInscripcion);
+            _context.detallesinscripciones.Add(detalleInscripcion);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDetalleInscripcion", new { id = detalleInscripcion.Id }, detalleInscripcion);
@@ -92,13 +92,13 @@ namespace Inscripciones.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDetalleInscripcion(int id)
         {
-            var detalleInscripcion = await _context.DetalleInscripcions.FindAsync(id);
+            var detalleInscripcion = await _context.detallesinscripciones.FindAsync(id);
             if (detalleInscripcion == null)
             {
                 return NotFound();
             }
 
-            _context.DetalleInscripcions.Remove(detalleInscripcion);
+            _context.detallesinscripciones.Remove(detalleInscripcion);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -106,7 +106,7 @@ namespace Inscripciones.Controllers
 
         private bool DetalleInscripcionExists(int id)
         {
-            return _context.DetalleInscripcions.Any(e => e.Id == id);
+            return _context.detallesinscripciones.Any(e => e.Id == id);
         }
 
         [HttpGet("checkduplicado")]
@@ -114,9 +114,9 @@ namespace Inscripciones.Controllers
         {
             bool isDuplicate;
             if (idDetalle == 0)
-                isDuplicate = await _context.DetalleInscripcions.AnyAsync(d=>d.InscripcionId==idInscripcion &&d.MateriaId==idMateria);
+                isDuplicate = await _context.detallesinscripciones.AnyAsync(d => d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
             else
-                isDuplicate= await _context.DetalleInscripcions.AnyAsync(d=>d.Id!= idDetalle && d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
+                isDuplicate = await _context.detallesinscripciones.AnyAsync(d => d.Id != idDetalle && d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
 
             if (isDuplicate)
             {

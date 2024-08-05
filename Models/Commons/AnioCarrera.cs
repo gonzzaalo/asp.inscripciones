@@ -9,14 +9,12 @@ namespace Inscripciones.Models
         public int CarreraId { get; set; }
         public Carrera? Carrera { get; set; }
         [NotMapped]
-        public string añoYCarrera
-        {
-           get { return $"{Nombre} {Carrera?.Nombre}" ?? string.Empty; }
+        public string AñoYCarrera {
+            get { return $"{Nombre} {Carrera?.Nombre}" ?? string.Empty; } 
         }
-
         public override string ToString()
         {
-            return añoYCarrera;
+            return AñoYCarrera;
         }
     }
 }

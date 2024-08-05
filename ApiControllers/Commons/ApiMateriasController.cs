@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Commons
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -26,16 +26,16 @@ namespace Inscripciones.Controllers
         {
             if (idAnioCarrera != null)
             {
-                return await _context.Materias.Where(m=>m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
+                return await _context.materias.Where(m => m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
             }
-            return await _context.Materias.ToListAsync();
+            return await _context.materias.ToListAsync();
         }
 
         // GET: api/ApiMaterias/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Materia>> GetMateria(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.materias.FindAsync(id);
 
             if (materia == null)
             {
@@ -81,7 +81,7 @@ namespace Inscripciones.Controllers
         [HttpPost]
         public async Task<ActionResult<Materia>> PostMateria(Materia materia)
         {
-            _context.Materias.Add(materia);
+            _context.materias.Add(materia);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMateria", new { id = materia.Id }, materia);
@@ -91,13 +91,13 @@ namespace Inscripciones.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMateria(int id)
         {
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.materias.FindAsync(id);
             if (materia == null)
             {
                 return NotFound();
             }
 
-            _context.Materias.Remove(materia);
+            _context.materias.Remove(materia);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -105,7 +105,7 @@ namespace Inscripciones.Controllers
 
         private bool MateriaExists(int id)
         {
-            return _context.Materias.Any(e => e.Id == id);
+            return _context.materias.Any(e => e.Id == id);
         }
     }
 }

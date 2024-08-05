@@ -1,4 +1,6 @@
-﻿namespace Inscripciones.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Inscripciones.Models
 {
     public class DetalleInscripcion
     {
@@ -12,5 +14,6 @@
         {
             return $"{Materia?.Nombre} {ModalidadCursado}" ?? string.Empty;
         }
+
     }
 }

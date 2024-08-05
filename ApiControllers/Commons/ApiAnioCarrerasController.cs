@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Commons
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,20 +22,20 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiAnioCarreras
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras([FromQuery] int? idCarrera )
+        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras([FromQuery] int? idCarrera)
         {
-            if(idCarrera != null)
+            if (idCarrera != null)
             {
-                return await _context.AnioCarreras.Include(a=>a.Carrera).Where(a=>a.CarreraId.Equals(idCarrera)).ToListAsync();
+                return await _context.anioscarreras.Include(a => a.Carrera).Where(a => a.CarreraId.Equals(idCarrera)).ToListAsync();
             }
-            return await _context.AnioCarreras.ToListAsync();
+            return await _context.anioscarreras.ToListAsync();
         }
 
         // GET: api/ApiAnioCarreras/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AnioCarrera>> GetAnioCarrera(int id)
         {
-            var anioCarrera = await _context.AnioCarreras.FindAsync(id);
+            var anioCarrera = await _context.anioscarreras.FindAsync(id);
 
             if (anioCarrera == null)
             {
@@ -81,7 +81,7 @@ namespace Inscripciones.Controllers
         [HttpPost]
         public async Task<ActionResult<AnioCarrera>> PostAnioCarrera(AnioCarrera anioCarrera)
         {
-            _context.AnioCarreras.Add(anioCarrera);
+            _context.anioscarreras.Add(anioCarrera);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAnioCarrera", new { id = anioCarrera.Id }, anioCarrera);
@@ -91,13 +91,13 @@ namespace Inscripciones.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAnioCarrera(int id)
         {
-            var anioCarrera = await _context.AnioCarreras.FindAsync(id);
+            var anioCarrera = await _context.anioscarreras.FindAsync(id);
             if (anioCarrera == null)
             {
                 return NotFound();
             }
 
-            _context.AnioCarreras.Remove(anioCarrera);
+            _context.anioscarreras.Remove(anioCarrera);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -105,7 +105,7 @@ namespace Inscripciones.Controllers
 
         private bool AnioCarreraExists(int id)
         {
-            return _context.AnioCarreras.Any(e => e.Id == id);
+            return _context.anioscarreras.Any(e => e.Id == id);
         }
     }
 }
