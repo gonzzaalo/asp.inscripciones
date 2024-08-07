@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    [Migration("20240805192154_inicioProyecto")]
-    partial class inicioProyecto
+    [Migration("20240807210944_inicio")]
+    partial class inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -5033,7 +5033,7 @@ namespace Inscripciones.Migrations
                             AlumnoId = 1,
                             CarreraId = 1,
                             CicloLectivoId = 1,
-                            Fecha = new DateTime(2024, 8, 5, 16, 21, 53, 423, DateTimeKind.Local).AddTicks(251)
+                            Fecha = new DateTime(2024, 8, 7, 18, 9, 39, 835, DateTimeKind.Local).AddTicks(4908)
                         });
                 });
 

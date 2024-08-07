@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Inscripciones.Migrations
 {
     /// <inheritdoc />
-    public partial class inicioProyecto : Migration
+    public partial class inicio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -596,7 +596,7 @@ namespace Inscripciones.Migrations
             migrationBuilder.InsertData(
                 table: "inscripciones",
                 columns: new[] { "Id", "AlumnoId", "CarreraId", "CicloLectivoId", "Fecha" },
-                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 8, 5, 16, 21, 53, 423, DateTimeKind.Local).AddTicks(251) });
+                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 8, 7, 18, 9, 39, 835, DateTimeKind.Local).AddTicks(4908) });
 
             migrationBuilder.InsertData(
                 table: "inscriptoscarreras",
