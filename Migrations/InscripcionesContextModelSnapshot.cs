@@ -4713,7 +4713,6 @@ namespace Inscripciones.Migrations
                         {
                             Id = 73,
                             Nombre = "Villa, M.F."
-<<<<<<< HEAD
                         },
                         new
                         {
@@ -4724,8 +4723,6 @@ namespace Inscripciones.Migrations
                         {
                             Id = 75,
                             Nombre = "Sager, L."
-=======
->>>>>>> d665bfe572e452465efd59f032aac09867190233
                         });
                 });
 
@@ -4788,7 +4785,6 @@ namespace Inscripciones.Migrations
                         {
                             Id = 1,
                             EsRecreo = false,
-<<<<<<< HEAD
                             Nombre = "08:00 - 08:40"
                         },
                         new
@@ -4928,9 +4924,6 @@ namespace Inscripciones.Migrations
                             Id = 24,
                             EsRecreo = false,
                             Nombre = "21:00 - 21:40"
-=======
-                            Nombre = "8:00hs a 9:00hs"
->>>>>>> d665bfe572e452465efd59f032aac09867190233
                         });
                 });
 
@@ -5037,11 +5030,7 @@ namespace Inscripciones.Migrations
                             AlumnoId = 1,
                             CarreraId = 1,
                             CicloLectivoId = 1,
-<<<<<<< HEAD
-                            Fecha = new DateTime(2024, 8, 7, 21, 45, 58, 916, DateTimeKind.Local).AddTicks(9170)
-=======
-                            Fecha = new DateTime(2024, 8, 5, 16, 17, 55, 807, DateTimeKind.Local).AddTicks(6689)
->>>>>>> d665bfe572e452465efd59f032aac09867190233
+                            Fecha = new DateTime(2024, 8, 8, 14, 26, 4, 46, DateTimeKind.Local).AddTicks(9557)
                         });
                 });
 

@@ -295,10 +295,7 @@ namespace Inscripciones.Models
                 new Materia { Id = 176, Nombre = "Seguridad de los Sistemas", AnioCarreraId = 6 },
                 new Materia { Id = 177, Nombre = "Administración de Sistemas Operativos y Redes", AnioCarreraId = 6 },
                 new Materia { Id = 178, Nombre = "Práctica Profesionalizante II", AnioCarreraId = 6 }
-<<<<<<< HEAD
                     
-=======
->>>>>>> d665bfe572e452465efd59f032aac09867190233
             };
 
             modelBuilder.Entity<Materia>().HasData(materiasEconomia);
@@ -429,7 +426,6 @@ namespace Inscripciones.Models
                 mm21, mm22, mm23, mm24, mm25, mm26, mm27, mm28, mm29, mm30,
                 mm31, mm32, mm33, mm34, mm35, mm36, mm37, mm38, mm39, mm40
             );
-<<<<<<< HEAD
             int initialId = 264;
             modelBuilder.Entity<Materia>().HasData(
                 new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 1 },
@@ -461,17 +457,11 @@ namespace Inscripciones.Models
                 new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 27 },
                 new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 28 }
                 );
-=======
->>>>>>> d665bfe572e452465efd59f032aac09867190233
             #endregion
             #endregion
 
             #region datos semillas alumnos
-<<<<<<< HEAD
            var ale = new Alumno { Id = 1, ApellidoNombre = "Rubén Alejandro Ramirez", Email = "aleramirezsj@gmail.com", Direccion = "Bv Roque Saenz Peña 2942", Telefono = "15447106" };
-=======
-            var ale = new Alumno { Id = 1, ApellidoNombre = "Rubén Alejandro Ramirez", Email = "aleramirezsj@gmail.com", Direccion = "Bv Roque Saenz Peña 2942", Telefono = "15447106" };
->>>>>>> d665bfe572e452465efd59f032aac09867190233
 
             modelBuilder.Entity<Alumno>().HasData(ale);
             #endregion
@@ -581,13 +571,9 @@ namespace Inscripciones.Models
     new Docente { Id = 70, Nombre = "Tschopp, M.R." },
     new Docente { Id = 71, Nombre = "Verzzali, A." },
     new Docente { Id = 72, Nombre = "Vigniatti, E." },
-<<<<<<< HEAD
     new Docente { Id = 73, Nombre = "Villa, M.F." },
     new Docente { Id = 74, Nombre = "Ruiz, A." },
     new Docente { Id = 75, Nombre = "Sager, L." }
-=======
-    new Docente { Id = 73, Nombre = "Villa, M.F." }
->>>>>>> d665bfe572e452465efd59f032aac09867190233
         );
             #endregion
             #region datos semillas Mesas de examenes
@@ -1011,7 +997,6 @@ namespace Inscripciones.Models
             modelBuilder.Entity<DetalleMesaExamen>().HasData(detallesMesaExamen);
             #endregion
             #region datos semillas Horas
-<<<<<<< HEAD
 
 
             modelBuilder.Entity<Hora>().HasData(
@@ -1041,11 +1026,6 @@ namespace Inscripciones.Models
                 new Hora { Id = 24, Nombre = "21:00 - 21:40", EsRecreo = false }
 
                 );
-=======
-            var hora = new Hora { Id = 1, Nombre = "8:00hs a 9:00hs", EsRecreo=false };
-
-            modelBuilder.Entity<Hora>().HasData(hora);
->>>>>>> d665bfe572e452465efd59f032aac09867190233
             #endregion
             #region datos semillas Horario
             var horario = new Horario { Id = 1, MateriaId=1, CantidadHoras=4, CicloLectivoId =1 };
