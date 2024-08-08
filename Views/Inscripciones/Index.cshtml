@@ -4,10 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
+<<<<<<< HEAD
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
+=======
+<h1>Inscripciones</h1>
+
+<p>
+    <a asp-action="Create">Crear nueva inscripción</a>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 </p>
 <table class="table">
     <thead>
@@ -36,12 +43,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Carrera.Nombre)
             </td>
+<<<<<<< HEAD
             <td>
                 <a asp-action="IndexPorInscripcion" asp-controller="DetalleInscripciones"  asp-route-idinscripcion="@item.Id">Inscripción Materias</a> |
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
+=======
+                <td>
+                    <a asp-action="IdexPorInscripcion" asp-controller="DetallaInscripciones" asp-route-idinscripcion="@item.Id">Inscripción Materias</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="edit-link">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details-link">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link">Eliminar</a>
+                </td>
+
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </tr>
 }
     </tbody>

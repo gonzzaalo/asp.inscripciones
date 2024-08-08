@@ -17,7 +17,11 @@ namespace Inscripciones.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+<<<<<<< HEAD
                 .HasAnnotation("ProductVersion", "8.0.7")
+=======
+                .HasAnnotation("ProductVersion", "8.0.6")
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -80,7 +84,11 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("CarreraId");
 
+<<<<<<< HEAD
                     b.ToTable("anioscarreras");
+=======
+                    b.ToTable("AnioCarreras");
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 
                     b.HasData(
                         new
@@ -265,10 +273,13 @@ namespace Inscripciones.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+<<<<<<< HEAD
                     b.Property<string>("Sigla")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                     b.HasKey("Id");
 
                     b.ToTable("carreras");
@@ -277,54 +288,87 @@ namespace Inscripciones.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             Nombre = "Tecnicatura Superior en Desarrollo de Software",
                             Sigla = "TSDS"
+=======
+                            Nombre = "Tecnicatura Superior en Desarrollo de Software"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             Nombre = "Tecnicatura Superior en Soporte de Infraestructura",
                             Sigla = "TSSITI"
+=======
+                            Nombre = "Tecnicatura Superior en Soporte de Infraestructura"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             Nombre = "Tecnicatura Superior en Gestion de las Organizaciones",
                             Sigla = "TSGO"
+=======
+                            Nombre = "Tecnicatura Superior en Gestion de las Organizaciones"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             Nombre = "Tecnicatura Superior en Enfermeria",
                             Sigla = "TSE"
+=======
+                            Nombre = "Tecnicatura Superior en Enfermeria"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración",
                             Sigla = "PEA"
+=======
+                            Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             Nombre = "Profesorado de Educación Inicial",
                             Sigla = "PEI"
+=======
+                            Nombre = "Profesorado de Educación Inicial"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             Nombre = "Profesorado de Educación Secundaria en Economía",
                             Sigla = "PEE"
+=======
+                            Nombre = "Profesorado de Educación Secundaria en Economía"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             Nombre = "Profesorado de Educación Tecnológica",
                             Sigla = "PET"
+=======
+                            Nombre = "Profesorado de Educación Tecnológica"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         },
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             Nombre = "Licenciatura en Cooperativismo y Mutualismo",
                             Sigla = "LCM"
                         });
@@ -402,6 +446,9 @@ namespace Inscripciones.Migrations
                             Email = "admin@gmail.com",
                             TipoUsuario = 2,
                             User = "admin"
+=======
+                            Nombre = "Licenciatura en Cooperativismo y Mutualismo"
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         });
                 });
 
@@ -428,6 +475,7 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("MateriaId");
 
+<<<<<<< HEAD
                     b.ToTable("detallesinscripciones");
 
                     b.HasData(
@@ -4991,6 +5039,9 @@ namespace Inscripciones.Migrations
                             DocenteId = 1,
                             HorarioId = 1
                         });
+=======
+                    b.ToTable("DetalleInscripciones");
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
@@ -5007,9 +5058,12 @@ namespace Inscripciones.Migrations
                     b.Property<int>("CarreraId")
                         .HasColumnType("int");
 
+<<<<<<< HEAD
                     b.Property<int>("CicloLectivoId")
                         .HasColumnType("int");
 
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime(6)");
 
@@ -5019,6 +5073,7 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("CarreraId");
 
+<<<<<<< HEAD
                     b.HasIndex("CicloLectivoId");
 
                     b.ToTable("inscripciones");
@@ -5056,6 +5111,9 @@ namespace Inscripciones.Migrations
                             Id = 1,
                             Nombre = "2024"
                         });
+=======
+                    b.ToTable("inscripciones");
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>
@@ -5077,7 +5135,11 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("AnioCarreraId");
 
+<<<<<<< HEAD
                     b.ToTable("materias");
+=======
+                    b.ToTable("Materias");
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 
                     b.HasData(
                         new
@@ -6657,6 +6719,7 @@ namespace Inscripciones.Migrations
                             Id = 263,
                             AnioCarreraId = 16,
                             Nombre = "Unidad de Definición Institucional"
+<<<<<<< HEAD
                         },
                         new
                         {
@@ -8126,6 +8189,8 @@ namespace Inscripciones.Migrations
                         {
                             Id = 1,
                             Nombre = "Julio/Agosto 2024"
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                         });
                 });
 
@@ -8140,6 +8205,7 @@ namespace Inscripciones.Migrations
                     b.Navigation("Carrera");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Inscripciones.Models.Commons.InscriptoCarrera", b =>
                 {
                     b.HasOne("Inscripciones.Models.Alumno", "Alumno")
@@ -8170,6 +8236,8 @@ namespace Inscripciones.Migrations
                     b.Navigation("Docente");
                 });
 
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
             modelBuilder.Entity("Inscripciones.Models.DetalleInscripcion", b =>
                 {
                     b.HasOne("Inscripciones.Models.Inscripcion", "Inscripcion")
@@ -8189,6 +8257,7 @@ namespace Inscripciones.Migrations
                     b.Navigation("Materia");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Inscripciones.Models.DetalleMesaExamen", b =>
                 {
                     b.HasOne("Inscripciones.Models.Docente", "Docente")
@@ -8253,6 +8322,8 @@ namespace Inscripciones.Migrations
                     b.Navigation("Horario");
                 });
 
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
                 {
                     b.HasOne("Inscripciones.Models.Alumno", "Alumno")
@@ -8267,6 +8338,7 @@ namespace Inscripciones.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+<<<<<<< HEAD
                     b.HasOne("Inscripciones.Models.Inscripciones.CicloLectivo", "CicloLectivo")
                         .WithMany()
                         .HasForeignKey("CicloLectivoId")
@@ -8278,6 +8350,11 @@ namespace Inscripciones.Migrations
                     b.Navigation("Carrera");
 
                     b.Navigation("CicloLectivo");
+=======
+                    b.Navigation("Alumno");
+
+                    b.Navigation("Carrera");
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>
@@ -8290,6 +8367,7 @@ namespace Inscripciones.Migrations
 
                     b.Navigation("AnioCarrera");
                 });
+<<<<<<< HEAD
 
             modelBuilder.Entity("Inscripciones.Models.MesasExamenes.MesaExamen", b =>
                 {
@@ -8314,6 +8392,8 @@ namespace Inscripciones.Migrations
                 {
                     b.Navigation("DetallesMesaExamen");
                 });
+=======
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 #pragma warning restore 612, 618
         }
     }

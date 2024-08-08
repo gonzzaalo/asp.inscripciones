@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     int idcarrera = ViewBag.IdCarrera;
+<<<<<<< HEAD
 
 }
 
@@ -10,6 +11,14 @@
 
 <p>
     <a asp-action="CreateConCarrera" asp-route-idcarrera="@idcarrera">Create New</a>
+=======
+}
+
+<h1>Mostrando Años de Carrera</h1>
+
+<p>
+    <a asp-action="CreatePorCarrera" asp-route-idcarrera="" style="color: black; background-color: #90EE90; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;">Crear Nueva</a>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 </p>
 <form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="post">
     <div class="form-group">
@@ -38,14 +47,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Carrera.Nombre)
             </td>
+<<<<<<< HEAD
             <td>
            <a asp-controller="Materias" asp-action="IndexPorAnio" asp-route-idanio="@item.Id">Materias</a> |
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
+=======
+                <td>
+                    <a asp-controller="Materias" asp-action="IndexPorAnio" asp-route-idanio="@item.Id" class="materias-link">Materias</a>
+
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="edit-link">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details-link">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link">Eliminar</a>
+                </td>
+
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </tr>
 }
     </tbody>
 </table>
+<<<<<<< HEAD
 <a asp-controller="Carreras" asp-action="Index">Volver</a>
+=======
+
+<a asp-controller="Carreras" asp-action="Index">Volver</a>
+
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea

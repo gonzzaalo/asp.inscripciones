@@ -4,10 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
+<<<<<<< HEAD
 <h1>Lista de alumnos</h1>
 
 <p>
     <a asp-action="Create">Crear nuevo alumno</a>
+=======
+<h1>Lista de Alumnos</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo Alumno</a>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 </p>
 <table class="table">
     <thead>
@@ -42,11 +49,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+<<<<<<< HEAD
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
+=======
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="edit-link">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details-link">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link">Eliminar</a>
+                </td>
+
+
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </tr>
 }
     </tbody>

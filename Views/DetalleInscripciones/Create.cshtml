@@ -4,9 +4,15 @@
     ViewData["Title"] = "Create";
 }
 
+<<<<<<< HEAD
 <h1>Create</h1>
 
 <h4>DetalleInscripcion</h4>
+=======
+<h1>Crear</h1>
+
+<h4>Detalle de Inscripcion</h4>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,6 +20,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ModalidadCursado" class="control-label"></label>
+<<<<<<< HEAD
                 <select asp-for="ModalidadCursado" asp-items="Html.GetEnumSelectList<ModalidadCursadoEnum>()" class="form-control"></select>
                 <span asp-validation-for="ModalidadCursado" class="text-danger"></span>
             </div>
@@ -27,13 +34,31 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+=======
+                <select asp-for="ModalidadCursado" asp-items="Html.GetEnumSelectList<ModalidadCursadoEnum>()" class="form-control"></select>                <span asp-validation-for="ModalidadCursado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InscripcionId" class="control-label"></label>
+                <select asp-for="InscripcionId" class ="form-control" asp-items="ViewBag.Inscripciones"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MateriaId" class="control-label"></label>
+                <select asp-for="MateriaId" class ="form-control" asp-items="ViewBag.Materias"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
             </div>
         </form>
     </div>
 </div>
 
 <div>
+<<<<<<< HEAD
     <a asp-action="Index">Back to List</a>
+=======
+    <a asp-action="Index">Volver a la lista</a>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 </div>
 
 @section Scripts {

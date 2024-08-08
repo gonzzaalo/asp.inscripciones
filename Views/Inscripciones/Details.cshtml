@@ -4,7 +4,11 @@
     ViewData["Title"] = "Details";
 }
 
+<<<<<<< HEAD
 <h1>Details</h1>
+=======
+<h1>Detalles</h1>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 
 <div>
     <h4>Inscripcion</h4>
@@ -14,23 +18,40 @@
             @Html.DisplayNameFor(model => model.Fecha)
         </dt>
         <dd class = "col-sm-10">
+<<<<<<< HEAD
             @Html.DisplayFor(model => model.Fecha)
+=======
+            @Model.Fecha.ToString("dd/MM/yyyy")
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Alumno)
         </dt>
         <dd class = "col-sm-10">
+<<<<<<< HEAD
             @Html.DisplayFor(model => model.Alumno.Id)
+=======
+            @Html.DisplayFor(model => model.Alumno.ApellidoNombre)
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Carrera)
         </dt>
         <dd class = "col-sm-10">
+<<<<<<< HEAD
             @Html.DisplayFor(model => model.Carrera.Id)
+=======
+            @Html.DisplayFor(model => model.Carrera.Nombre)
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
         </dd>
     </dl>
 </div>
 <div>
+<<<<<<< HEAD
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
+=======
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+>>>>>>> 22dffa65b1a09e04e32f7b43817b799fa45ab3ea
 </div>
